@@ -2,8 +2,14 @@ import 'package:expense_tracker/widgets/expenses.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-var kColorScheme =
-    ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 96, 59, 181));
+var kColorScheme = ColorScheme.fromSeed(
+  seedColor: const Color.fromARGB(255, 96, 59, 181),
+);
+
+var kDarkColorScheme = ColorScheme.fromSeed(
+  brightness: Brightness.dark,
+  seedColor: const Color.fromARGB(255, 5, 99, 125),
+);
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +21,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      darkTheme: ThemeData.dark().copyWith(
+        useMaterial3: true,
+        colorScheme: kDarkColorScheme,
+        cardTheme: const CardTheme().copyWith(
+          color: kDarkColorScheme.secondaryContainer,
+          margin: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kDarkColorScheme.primaryContainer,
+            foregroundColor: kDarkColorScheme.onPrimaryContainer
+          ),
+        ),
+      ),
       theme: ThemeData().copyWith(
         useMaterial3: true,
         colorScheme: kColorScheme,
@@ -40,22 +63,14 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               bodySmall: GoogleFonts.raleway(
-                textStyle: const TextStyle(
-                  fontWeight: FontWeight.w400
-                )
-              ),
+                  textStyle: const TextStyle(fontWeight: FontWeight.w400)),
               labelLarge: GoogleFonts.raleway(
-                textStyle: const TextStyle(
-                  fontWeight: FontWeight.w600
-                )
-              ),
+                  textStyle: const TextStyle(fontWeight: FontWeight.w600)),
               bodyMedium: GoogleFonts.lato(
-                textStyle: const TextStyle(
-                  fontWeight: FontWeight.w400
-                )
-              ),
+                  textStyle: const TextStyle(fontWeight: FontWeight.w400)),
             ),
       ),
+      // themeMode: ThemeMode.dark,
       home: const Expenses(),
       debugShowCheckedModeBanner: false,
     );
