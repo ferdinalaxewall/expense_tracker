@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
                   textStyle: const TextStyle(fontWeight: FontWeight.w400)),
             ),
       ),
-      // themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
       home: const Expenses(),
       debugShowCheckedModeBanner: false,
     );
